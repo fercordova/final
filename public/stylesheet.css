@@ -7,15 +7,15 @@ h1, h2, h3, h4, h5, h6 {
   }
 }
 .navbar-light .navbar-brand {
-    color: darkblue;
+    color: black;
 }
 .jumbotron {
     background-attachment: fixed;
-    background-color :yellow; 
+    background-color :gray; 
     size="550px";
     background-size: cover;
   
-    color: purple;  
+    color: white;  
             text-shadow: 25px 25px 25px black;
 }
 
