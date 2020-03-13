@@ -15,21 +15,74 @@ end
 DB.create_table! :rsvps do
   primary_key :id
   foreign_key :event_id
+  foreign_key :user_id
   Boolean :going
   String :name
   String :email
   String :comments, text: true
 end
 
+DB.create_table! :users do
+  primary_key :id
+  String :name
+  String :email
+  String :password
+end
+
 # Insert initial (seed) data
 events_table = DB.from(:events)
 
-events_table.insert(title: "Bacon Burger Taco Fest", 
+events_table.insert(title: "Mexican Taquitos", 
                     description: "Here we go again bacon burger taco fans, another Bacon Burger Taco Fest is here!",
                     date: "June 21",
                     location: "Kellogg Global Hub")
 
-events_table.insert(title: "Kaleapolooza", 
+events_table.insert(title: "Hotdogs", 
+                    description: "If you're into nutrition and vitamins and stuff, this is the event for you.",
+                    date: "July 4",
+                    location: "Nowhere")
+
+events_table.insert(title: "Chinesse Food", 
+                    description: "If you're into nutrition and vitamins and stuff, this is the event for you.",
+                    date: "July 4",
+                    location: "Nowhere")
+
+events_table.insert(title: "Kebabs", 
+                    description: "If you're into nutrition and vitamins and stuff, this is the event for you.",
+                    date: "July 4",
+                    location: "Nowhere")
+                    
+events_table.insert(title: "Pizza", 
+                    description: "If you're into nutrition and vitamins and stuff, this is the event for you.",
+                    date: "July 4",
+                    location: "Nowhere")
+                    
+events_table.insert(title: "Hmaburguers", 
+                    description: "If you're into nutrition and vitamins and stuff, this is the event for you.",
+                    date: "July 4",
+                    location: "Nowhere")
+
+events_table.insert(title: "Tortas", 
+                    description: "If you're into nutrition and vitamins and stuff, this is the event for you.",
+                    date: "July 4",
+                    location: "Nowhere")
+
+events_table.insert(title: "Sushi", 
+                    description: "If you're into nutrition and vitamins and stuff, this is the event for you.",
+                    date: "July 4",
+                    location: "Nowhere")
+
+events_table.insert(title: "Smoke & Barbecue", 
+                    description: "If you're into nutrition and vitamins and stuff, this is the event for you.",
+                    date: "July 4",
+                    location: "Nowhere")
+
+events_table.insert(title: "Ice Cream", 
+                    description: "If you're into nutrition and vitamins and stuff, this is the event for you.",
+                    date: "July 4",
+                    location: "Nowhere")
+
+events_table.insert(title: "Pancakes", 
                     description: "If you're into nutrition and vitamins and stuff, this is the event for you.",
                     date: "July 4",
                     location: "Nowhere")
