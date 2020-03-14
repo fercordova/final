@@ -7,18 +7,20 @@ DB = Sequel.connect(connection_string)                                          
 # Database schema - this should reflect your domain model
 DB.create_table! :events do
   primary_key :id
-  String :title
-  String :description, text: true
-  String :date
-  String :location
+  String :event_name
+  String :address
+  String :website
+  String :email
+  String :phone
 end
 DB.create_table! :rsvps do
   primary_key :id
   foreign_key :event_id
   foreign_key :user_id
-  Boolean :going
-  String :name
-  String :email
+  Integer :overall_rating
+  Integer :sound_rating
+  Integer :vibe_rating
+  Integer :payout_rating
   String :comments, text: true
 end
 
@@ -32,57 +34,26 @@ end
 # Insert initial (seed) data
 events_table = DB.from(:events)
 
-events_table.insert(title: "Mexican Taquitos", 
-                    description: "Here we go again bacon burger taco fans, another Bacon Burger Taco Fest is here!",
-                    date: "June 21",
-                    location: "Kellogg Global Hub")
+events_table.insert(event_name: "Mexican Taquitos", 
+                    address: "3855 N Lincoln Ave, Chicago, IL 60613",
+                    website: "http://martyrslive.com/",
+                    email: "bruce@martyrslive.com",
+                    phone: "(773) 404-9494")
 
-events_table.insert(title: "Hotdogs", 
-                    description: "If you're into nutrition and vitamins and stuff, this is the event for you.",
-                    date: "July 4",
-                    location: "Nowhere")
+events_table.insert(event_name: "Hotdogs", 
+                   address: "2447 N Halsted St, Chicago, IL 60614",
+                    website: "https://tonicroom.ticketfly.com/",
+                    email: "booking@harmonicadunn.com",
+                    phone: "(773) 248-8400")
 
-events_table.insert(title: "Chinesse Food", 
-                    description: "If you're into nutrition and vitamins and stuff, this is the event for you.",
-                    date: "July 4",
-                    location: "Nowhere")
+events_table.insert(event_name: "Chinesse Food", 
+                    address: "2002 N Halsted St, Chicago, IL 60614",
+                    website: "https://storefm.com/",
+                    email: "contact@storefm.com",
+                    phone: "(773) 327-7766")
 
-events_table.insert(title: "Kebabs", 
-                    description: "If you're into nutrition and vitamins and stuff, this is the event for you.",
-                    date: "July 4",
-                    location: "Nowhere")
-                    
-events_table.insert(title: "Pizza", 
-                    description: "If you're into nutrition and vitamins and stuff, this is the event for you.",
-                    date: "July 4",
-                    location: "Nowhere")
-                    
-events_table.insert(title: "Hmaburguers", 
-                    description: "If you're into nutrition and vitamins and stuff, this is the event for you.",
-                    date: "July 4",
-                    location: "Nowhere")
+users_table = DB.from(:users)
 
-events_table.insert(title: "Tortas", 
-                    description: "If you're into nutrition and vitamins and stuff, this is the event for you.",
-                    date: "July 4",
-                    location: "Nowhere")
-
-events_table.insert(title: "Sushi", 
-                    description: "If you're into nutrition and vitamins and stuff, this is the event for you.",
-                    date: "July 4",
-                    location: "Nowhere")
-
-events_table.insert(title: "Smoke & Barbecue", 
-                    description: "If you're into nutrition and vitamins and stuff, this is the event for you.",
-                    date: "July 4",
-                    location: "Nowhere")
-
-events_table.insert(title: "Ice Cream", 
-                    description: "If you're into nutrition and vitamins and stuff, this is the event for you.",
-                    date: "July 4",
-                    location: "Nowhere")
-
-events_table.insert(title: "Pancakes", 
-                    description: "If you're into nutrition and vitamins and stuff, this is the event for you.",
-                    date: "July 4",
-                    location: "Nowhere")
+users_table.insert(name: "Anonymous", 
+                    email: "anonymous@musiciansguide.com",
+                    password: "anonymous")

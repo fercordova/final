@@ -1,9 +1,5 @@
-<h1>I am hungry for:</h1>
-<div> 
-                    <table class="table">
-                        <% for event in @events %>
-    <p><a href="/events/<%= event[:id] %>"><%= event[:title] %></a></p>
-                        <% end %>
+<h1>All Events</h1>
 
- </div> 
-                       
+<% for event in @events %>
+    <p><a href="/events/<%= event[:id] %>"><%= event[:event_name] %></a></p>
+<% end %>
