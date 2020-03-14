@@ -54,6 +54,4 @@ events_table.insert(event_name: "Chinesse Food",
 
 users_table = DB.from(:users)
 
-users_table.insert(name: "Anonymous", 
-                    email: "anonymous@musiciansguide.com",
-                    password: "anonymous")
+
