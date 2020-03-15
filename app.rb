@@ -19,13 +19,13 @@ events_table = DB.from(:events)
 rsvps_table = DB.from(:rsvps)
 users_table = DB.from(:users)
 
-
 before do
     @current_user = users_table.where(id: session["user_id"]).to_a[0]
 end
 
 get "/" do
-    view "new_user"
+
+view "new_user"
     
 end
 
@@ -93,6 +93,14 @@ get "/events/:id/rsvps/create" do
 end
 
 get "/users/new" do
+    account_sid = ENV["ACCOUNT_SID"]
+auth_token = ENV["AUTH_TOKEN"]
+client = Twilio::REST::Client.new(account_sid, auth_token)
+client.messages.create(
+ from: "+12055518176", 
+ to: "+13128259504",
+ body: "Yeah!"
+)    
     view "new_user"
 end
 
