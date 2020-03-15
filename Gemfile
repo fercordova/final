@@ -6,3 +6,6 @@ gem 'sequel'
 gem 'sqlite3'
 gem 'twilio-ruby'
 gem 'bcrypt'
+gem 'geocoder'
+
+

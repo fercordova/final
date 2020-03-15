@@ -4,7 +4,8 @@ require "sinatra/reloader" if development?                                      
 require "sequel"                                                                      #
 require "logger"                                                                      #
 require "twilio-ruby"                                                                 #
-require "bcrypt"                                                                      #
+require "bcrypt"    
+require "geocoder"                                                                  #
 connection_string = ENV['DATABASE_URL'] || "sqlite://#{Dir.pwd}/development.sqlite3"  #
 DB ||= Sequel.connect(connection_string)                                              #
 DB.loggers << Logger.new($stdout) unless DB.loggers.size > 0                          #
@@ -40,6 +41,14 @@ get "/events/:id" do
     @event = events_table.where(id: params[:id]).to_a[0]
     @rsvps = rsvps_table.where(event_id: @event[:id])
     @users_table = users_table
+    
+    results = Geocoder.search(@event[:address])
+    @georesults = results.first.coordinates # => [lat, long]
+    @lat = @georesults[0]
+    @long = @georesults[1]
+    @lat_long = "#{@lat},#{@long}"
+
+   
     @avg_overall = rsvps_table.where(event_id: @event[:id]).avg(:overall_rating)
     @avg_sound = rsvps_table.where(event_id: @event[:id]).avg(:sound_rating)
     @avg_vibe = rsvps_table.where(event_id: @event[:id]).avg(:vibe_rating)

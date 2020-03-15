@@ -7,7 +7,7 @@
 
 <div class = "row mt-4">
     <div class = "col-md-6">
-        <h2>Teriyiaki Hub Ratings</h2>
+        <h2>Ratings</h2>
     </div>
     <div class = "col-md-6">
         <h2>Location Details</h2>
@@ -83,12 +83,11 @@
         <p>Email: <%= @event[:email] %></p>
         <p>Phone: <%= @event[:phone] %></p>
         <p>Website: <a href="<%=@event[:website]%>"><%=@event[:website]%></a></p>
-        <iframe
-            width="250"
-            height="150"
+         <iframe
+            width="300"
+            height="250"
             frameborder="0" style="border:0"
-            src="https://www.google.com/maps/embed/v1/place?key=AIzaSyCtovsQvkIUWlNqtYwXY87gEd4ZSmJEhMw
-            &q=<%=@event[:address]%>&zoom=12" allowfullscreen>
+            src="https://www.google.com/maps/embed/v1/place?key=AIzaSyCtovsQvkIUWlNqtYwXY87gEd4ZSmJEhMw&q=<%= @lat_long %>&zoom=12" allowfullscreen>
         </iframe>
     </div>
 </div>
