@@ -35,10 +35,10 @@ end
 events_table = DB.from(:events)
 
 events_table.insert(event_name: "Mexican Taquitos", 
-                    address: "3855 N Lincoln Ave, Chicago, IL 60613",
-                    website: "http://martyrslive.com/",
-                    email: "bruce@martyrslive.com",
-                    phone: "(773) 404-9494")
+                    address: "10 S Wacker Dr, Chicago, IL 60606",
+                    website: "https://lacocinitafoodtruck.com/",
+                    email: "service@lacochinitafoodtruck.com",
+                    phone: "(504) 309-5344")
 
 events_table.insert(event_name: "Hotdogs", 
                    address: "2447 N Halsted St, Chicago, IL 60614",

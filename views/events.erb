@@ -1,11 +1,5 @@
-<body>
- <div class="container">
-        <div class="jumbotron text-center">
-            <h1 class="display-4" style = "font-family: "Montserrat', sans-serif">F00DPORN EVENTS! </h1>
-            </div>
-    </div>
 
-    <h1>F00DPORN</h1>
+    <h1>F00DPORN EVENTS!</h1>
 
     <% for event in @events %>
         <p><a href="/events/<%= event[:id] %>"><%= event[:event_name] %></a></p>
