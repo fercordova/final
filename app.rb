@@ -93,14 +93,7 @@ get "/events/:id/rsvps/create" do
 end
 
 get "/users/new" do
-#     account_sid = ENV["ACCOUNT_SID"]
-# auth_token = ENV["AUTH_TOKEN"]
-# client = Twilio::REST::Client.new(account_sid, auth_token)
-# client.messages.create(
-#  from: "+12055518176", 
-#  to: "+13128259504",
-#  body: "Yeah!"
-# )    
+
     view "new_user"
 end
 
@@ -108,6 +101,15 @@ post "/users/create" do
     puts params
     hashed_password = BCrypt::Password.create(params["password"])
     users_table.insert(name: params["name"], email: params["email"], password: hashed_password)
+    account_sid = ENV["ACCOUNT_SID"]
+    auth_token = ENV["AUTH_TOKEN"]
+    client = Twilio::REST::Client.new(account_sid, auth_token)
+    client.messages.create(
+    from: "+12055518176", 
+    to: "+13128259504",
+    body: "Yeah!")     
+    
+    
     view "create_user"
 end
 
